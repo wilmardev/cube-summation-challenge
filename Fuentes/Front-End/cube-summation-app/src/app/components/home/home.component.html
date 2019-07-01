@@ -1,0 +1,31 @@
+<div>
+  <div class="container text-center">
+    <h1>Cube Summation</h1>
+  </div>
+  <div>
+    <!--[formGroup]="formCubeSummation"-->
+    <form id="formCubeSummation" class="tamano-form" [formGroup]="formCubeSummation" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="txtDataInput">Data Input</label>
+        <textarea class="form-control tamano-text-area" id="txtDataInput" rows="5" formControlName="dataInput"
+          #textDataInput placeholder="Input Data"
+          [ngClass]="{ 'is-invalid': submitted && fo.dataInput.errors }"></textarea>
+        <div *ngIf="submitted && fo.dataInput.errors" class="invalid-feedback">
+          <div *ngIf="fo.dataInput.errors.required">{{ util.MENSAJE_CAMPO_OBLIGATORIO }}</div>
+          <div *ngIf="fo.dataInput.errors.pattern"> {{ util.MENSAJE_CAMPO_SOLO_LETRAS_ESPACIO }} </div>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary form-control">Submit</button>
+      </div>
+      <br><br>
+      <div class="form-group">
+        <label for="txtOutput">Output</label>
+        <textarea class="form-control tamano-text-area" id="txtOutput" rows="5" formControlName="dataOutput"
+          #textDataOutput placeholder="Output"
+          [ngClass]="{ 'is-invalid': submitted && fo.dataOutput.errors }"></textarea>
+      </div>
+    </form>
+  </div>
+</div>
