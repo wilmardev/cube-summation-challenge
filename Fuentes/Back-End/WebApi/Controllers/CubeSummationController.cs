@@ -1,18 +1,20 @@
 ﻿using Challenge.CubeSummationNS.BR;
 using Challenge.CubeSummationNS.Model.Resources;
+using Microsoft.AspNetCore.Cors;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace Challenge.CodeSummation.WebApi.Controllers
+namespace Challenge.CodeSummationNS.WebApi.Controllers
 {
     public class CubeSummationController : BaseController
     {
         private readonly Factory factory = new Factory();
 
         [HttpPost]
-        public HttpResponseMessage ProcesarInformacion(string datosCubos)
+        [EnableCors]
+        public HttpResponseMessage ProcesarInformacion([FromBody] string datosCubos)
         {
             try
             {
