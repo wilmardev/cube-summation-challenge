@@ -4,10 +4,19 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace Challenge.CodeSummation.WebApi.Controllers
+namespace Challenge.CodeSummationNS.WebApi.Controllers
 {
     public class BaseController : ApiController
     {
+        public HttpResponseMessage Options()
+        {
+            var response = new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK
+            };
+            return response;
+        }
+
         protected HttpResponseMessage GenerarMensajeRespuesta(HttpStatusCode statusCode, object informacion = null)
         {
             return Request.CreateResponse(statusCode, informacion);
