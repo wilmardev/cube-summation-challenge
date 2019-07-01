@@ -38,33 +38,30 @@ namespace Challenge.CubeSummationNS.BR
 
         private RespuestaGeneral ProcesarCubo(Cubo cubo, RespuestaGeneral respuestaGeneral)
         {
-            int[,,] matriz = new int[cubo.TamanoMatriz, cubo.TamanoMatriz, cubo.TamanoMatriz];
+            long[,,] matriz = new long[cubo.TamanoMatriz, cubo.TamanoMatriz, cubo.TamanoMatriz];
             return ResolverOperacionesMatriz(matriz, cubo, respuestaGeneral);
         }
 
-        private RespuestaGeneral ResolverOperacionesMatriz(int[,,] matriz, Cubo cubo, RespuestaGeneral respuestaGeneral)
+        private RespuestaGeneral ResolverOperacionesMatriz(long[,,] matriz, Cubo cubo, RespuestaGeneral respuestaGeneral)
         {
-            for (int i = 0; i < cubo.CantidadOperaciones; i++)
-            {
-                if (!respuestaGeneral.Estado)
-                    return respuestaGeneral;
-                respuestaGeneral = ResolverOperaciones(cubo, matriz, ref respuestaGeneral);
-            }
-            return respuestaGeneral;
+            if (!respuestaGeneral.Estado)
+                return respuestaGeneral;
+            return ResolverOperaciones(cubo, matriz, ref respuestaGeneral);
         }
 
-        private RespuestaGeneral ResolverOperaciones(Cubo cubo, int[,,] matriz, ref RespuestaGeneral respuestaGeneral)
+        private RespuestaGeneral ResolverOperaciones(Cubo cubo, long[,,] matriz, ref RespuestaGeneral respuestaGeneral)
         {
             foreach (OperacionCubo operacionCubo in cubo.OperacionesCubo)
             {
-                respuestaGeneral = validacionDatos.ValidarCoordenadas(operacionCubo.InformacionOperacion, cubo);
+                string tipoOperacion = operacionCubo.TipoOperacion.ToUpper();
                 if (!respuestaGeneral.Estado)
                     return respuestaGeneral;
+                validacionDatos.ValidarCoordenadas(operacionCubo.InformacionOperacion, cubo, ref respuestaGeneral, tipoOperacion);
 
-                if (operacionCubo.TipoOperacion.ToUpper().Equals(TipoOperacion.UPDATE.ToString()))
+                if (tipoOperacion.Equals(TipoOperacion.UPDATE.ToString()))
                     operacion.ProcesarOperacionUpdate(operacionCubo, matriz, ref respuestaGeneral);
 
-                if (operacionCubo.TipoOperacion.ToUpper().Equals(TipoOperacion.QUERY.ToString()))
+                if (tipoOperacion.Equals(TipoOperacion.QUERY.ToString()))
                     operacion.ProcesarOperacionQuery(operacionCubo, matriz, ref respuestaGeneral);
             }
             return respuestaGeneral;
