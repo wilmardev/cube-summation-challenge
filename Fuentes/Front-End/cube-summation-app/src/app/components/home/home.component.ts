@@ -56,11 +56,12 @@ QUERY 2 2 2 2 2 2`;
             this.util.manageResponseFalse(response);
           }
         },
-        error => { this.util.showAlertError('Ha ocurrido un error inesperado. Por favor contacte al personal de soporte.'); });
+        error => { this.util.showSweetAlert('Ha ocurrido un error inesperado. Por favor contacte al personal de soporte.', false); });
     }
   }
 
   actionAfterPostSuccess(response: RespuestaGeneral): any {
+    this.util.showSweetAlert(null, true);
     this.textAreaOutput.nativeElement.value = response.Mensaje;
   }
 
