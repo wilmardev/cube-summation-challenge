@@ -20,22 +20,14 @@ export class Util {
     }
 
     showAlert(message: string = '', response: RespuestaGeneral) {
-        swal.fire({
-            title: response.Estado ? 'Operación Exitosa' : 'Error',
-            text: message,
-            type: response.Estado ? 'success' : 'error',
-            confirmButtonText: 'Aceptar',
-            confirmButtonColor: '#007bff',
-            allowOutsideClick: false,
-            heightAuto: false
-        });
+        this.showSweetAlert(message, response.Estado);
     }
 
-    showAlertError(message: string = '') {
+    showSweetAlert(message: string = '', status: boolean) {
         swal.fire({
-            title: 'Error',
+            title: status ? 'Operación Exitosa' : 'Error',
             text: message,
-            type: 'error',
+            type: status ? 'success' : 'error',
             confirmButtonText: 'Aceptar',
             confirmButtonColor: '#007bff',
             allowOutsideClick: false,
