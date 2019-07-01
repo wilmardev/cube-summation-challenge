@@ -19,7 +19,7 @@ namespace Challenge.CodeSummationNS.WebApi.Controllers
             try
             {
                 if (string.IsNullOrEmpty(datosCubos))
-                    return GenerarMensajeRespuesta(HttpStatusCode.OK, CubeSummationResources.Error_Datos_Entrada_Vacio);
+                    return GenerarRespuestaGeneral(HttpStatusCode.OK, CubeSummationResources.Error_Datos_Entrada_Vacio, false);
                 ICubeSummationBR cubeSummation = ConstruirCubeSummationBR();
                 var respuesta = cubeSummation.ProcesarInformacion(datosCubos);
                 return GenerarMensajeRespuesta(HttpStatusCode.OK, respuesta);

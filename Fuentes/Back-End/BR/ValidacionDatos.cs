@@ -81,8 +81,11 @@ namespace Challenge.CubeSummationNS.BR
             int length = tipoOperacion.Equals(TipoOperacion.UPDATE.ToString()) ? informacionOperacion.Length - 1 : informacionOperacion.Length;
             for (int i = 0; i < length; i++)
             {
-                if (informacionOperacion[i] - 1 > cubo.TamanoMatriz || informacionOperacion[i] - 1 < 0)
+                if (informacionOperacion[i] > cubo.TamanoMatriz || informacionOperacion[i] <= 0)
+                {
                     respuestaGeneral = FuncionesGenericas.ObtenerRespuesta(false, respuestaGeneral.Mensaje + "\n" + CubeSummationResources.Error_Coordenadas);
+                    return;
+                }
             }
         }
     }

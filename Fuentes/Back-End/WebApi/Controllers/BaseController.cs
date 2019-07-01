@@ -1,4 +1,5 @@
-﻿using Challenge.CubeSummationNS.Model.Resources;
+﻿using Challenge.CubeSummationNS.Model.Models;
+using Challenge.CubeSummationNS.Model.Resources;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -10,11 +11,7 @@ namespace Challenge.CodeSummationNS.WebApi.Controllers
     {
         public HttpResponseMessage Options()
         {
-            var response = new HttpResponseMessage
-            {
-                StatusCode = HttpStatusCode.OK
-            };
-            return response;
+            return new HttpResponseMessage { StatusCode = HttpStatusCode.OK };
         }
 
         protected HttpResponseMessage GenerarMensajeRespuesta(HttpStatusCode statusCode, object informacion = null)
@@ -28,6 +25,16 @@ namespace Challenge.CodeSummationNS.WebApi.Controllers
             //un mensaje genérico de error
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError,
                 CubeSummationResources.Error_Mensaje_Default);
+        }
+
+        protected HttpResponseMessage GenerarRespuestaGeneral(HttpStatusCode statusCode, string mensaje, bool estado)
+        {
+            RespuestaGeneral respuestaGeneral = new RespuestaGeneral
+            {
+                Estado = estado,
+                Mensaje = mensaje
+            };
+            return GenerarMensajeRespuesta(statusCode, respuestaGeneral);
         }
     }
 }
