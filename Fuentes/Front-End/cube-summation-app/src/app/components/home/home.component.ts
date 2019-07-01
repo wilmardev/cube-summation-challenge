@@ -11,7 +11,7 @@ import { CubeSummationService } from '../../services/cube-summation.service';
 })
 export class HomeComponent implements OnInit {
 
-  private DATA_INPUT_DEFAULT = `3
+  private DATA_INPUT_DEFAULT = `2
 4 5
 UPDATE 2 2 2 4
 QUERY 1 1 1 3 3 3
@@ -54,9 +54,13 @@ QUERY 2 2 2 2 2 2`;
             this.actionAfterPostSuccess(response);
           } else {
             this.util.manageResponseFalse(response);
+            this.textAreaOutput.nativeElement.value = null;
           }
         },
-        error => { this.util.showSweetAlert('Ha ocurrido un error inesperado. Por favor contacte al personal de soporte.', false); });
+          error => {
+            this.util.showSweetAlert('Ha ocurrido un error inesperado. Por favor contacte al personal de soporte.', false);
+            this.textAreaOutput.nativeElement.value = null;
+          });
     }
   }
 
