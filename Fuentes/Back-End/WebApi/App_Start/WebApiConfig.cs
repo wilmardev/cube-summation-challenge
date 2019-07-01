@@ -10,9 +10,11 @@ namespace WebApi
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
+            config.EnableCors();
             // Web API routes
             config.MapHttpAttributeRoutes();
+            // Accept media type text/plain
+            config.Formatters.Insert(0, new TextMediaTypeFormatter());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
