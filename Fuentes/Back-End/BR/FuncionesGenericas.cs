@@ -1,4 +1,5 @@
 ﻿using Challenge.CubeSummationNS.Model.Models;
+using Challenge.CubeSummationNS.Model.Resources;
 using System;
 
 namespace Challenge.CubeSummationNS.BR
@@ -8,7 +9,7 @@ namespace Challenge.CubeSummationNS.BR
         public static RespuestaGeneral ManejarExcepcion(Exception exception)
         {
             // Grabar en log y/o visor de eventos
-            return ObtenerRespuesta(false, Model.AppResources.CubeSummationResources.Error_Mensaje_Default);
+            return ObtenerRespuesta(false, CubeSummationResources.Error_Mensaje_Default);
         }
 
         public static RespuestaGeneral ObtenerRespuesta(bool estado, string mensaje = null, object informacion = null)
