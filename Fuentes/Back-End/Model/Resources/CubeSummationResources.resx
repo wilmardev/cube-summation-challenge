@@ -127,7 +127,7 @@
     <value>La operación 'UPDATE' solo permite cuatro (4) datos de entrada.</value>
   </data>
   <data name="Error_Coordenadas" xml:space="preserve">
-    <value>Las coordenadas deben de ser menor o igual que el tamaño de la matriz.</value>
+    <value>Las coordenadas deben de ser menor o igual que el tamaño de la matriz y mayores que cero (0).</value>
   </data>
   <data name="Error_Datos_Entrada_Vacio" xml:space="preserve">
     <value>Los datos de entrada deben contener valor.</value>

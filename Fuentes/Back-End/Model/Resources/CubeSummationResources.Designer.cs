@@ -88,7 +88,7 @@ namespace Challenge.CubeSummationNS.Model.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Las coordenadas deben de ser menor o igual que el tamaño de la matriz..
+        ///   Looks up a localized string similar to Las coordenadas deben de ser menor o igual que el tamaño de la matriz y mayores que cero (0)..
         /// </summary>
         public static string Error_Coordenadas {
             get {
